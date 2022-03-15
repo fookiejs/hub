@@ -1,51 +1,60 @@
-<script setup>
-import { Icon } from "@iconify/vue";
-</script>
-
 <template>
-  <div
-    class="text-gray-700 w-screen h-screen border justify-center items-center"
-  >
-    <header>
-      <div class="text-6xl">Fookie JS</div>
-      <div class="text-2xl">Model based reactive javascript framework.</div>
-      <div>
-        <a href="https://github.com/fookiejs/core">
-          <button class="flex justify-center items-center">
-            <Icon icon="akar-icons:github-fill" height="32"> </Icon>
-            <div class="w-1"></div>
-            <span>Github</span>
-          </button>
-        </a>
-        <a href="https://github.com/fookiejs/core">
-          <button class="flex justify-center items-center">
-            <Icon icon="cib:postman" height="32"> </Icon>
-            <div class="w-1"></div>
-            <span>Postman</span>
-          </button>
-        </a>
-        <a href="https://github.com/fookiejs/core">
-          <button class="flex justify-center items-center">
-            <Icon icon="simple-icons:githubpages" height="32"> </Icon>
-            <div class="w-1"></div>
-            <span>Github Pages</span>
-          </button>
-        </a>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
       </div>
-    </header>
-    <main>
-      <div class="text-4xl">Utils</div>
-      <div class="">
-        <a class="text-2xl" href="https://ui.fookiejs.com">
-          <div>UI</div>
-        </a>
-        <a class="text-2xl" href="https://doc.fookiejs.com">
-          <div>DOC</div>
-        </a>
-      </div>
-    </main>
-  </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <HelloWorld/>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-</style>
+<script>
+import HelloWorld from './components/HelloWorld';
+
+export default {
+  name: 'App',
+
+  components: {
+    HelloWorld,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
