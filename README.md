@@ -1,4 +1,4 @@
-# asd
+# my-app
 
 ## Project setup
 ```
