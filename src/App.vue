@@ -1,9 +1,9 @@
 <template lang="pug">
 v-app(app)
-  v-app-bar(app)
+  v-app-bar(app, flat, color="white")
     v-container
       v-row(align="center")
-        v-toolbar-title Fookie JS
+        v-toolbar-title() Fookie JS
         v-spacer
         v-btn(text) Doc
         v-btn(icon)
