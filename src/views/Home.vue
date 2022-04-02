@@ -11,37 +11,25 @@ div(class="tw-grid tw-gap-8")
       span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisl est, consequat sit amet ultrices quis, congue non libero. 
   v-row
     v-col(class="tw-flex items-center justify-center")
-      v-btn(text) Github 
+      v-btn(elevation="0" class="tw-mx-1" href="https://github.com/fookiejs/core" target="#") Github 
         v-icon(right) mdi-github
-      v-btn(text) Documentation 
-        v-icon(right) mdi-file-document-multiple-outline
-      v-btn(text) Examples 
+      v-btn(elevation="0" class="tw-mx-1" href="https://fookiejs.github.io/core/" target="#") Documentation 
+        v-icon(right) mdi-book-outline
+      v-btn(elevation="0" class="tw-mx-1" href="https://github.com/fookiejs/examples" target="#") Examples  
         v-icon(right) mdi-file-code-outline
 
   v-row(class="tw-text-2xl tw-text-center")
     v-col
-      h3 Plugins
+      h3 Offical Plugins
   v-row(justify="tw-grid tw-gap-4 items-center justify-center")
     div(v-for="plugin in plugins")
-      v-hover(v-slot="{ hover }")
-        v-card( :dark="hover" :class="hover ? 'tw-cursor-pointer' : ''"  width="350")
-          v-card-title {{ plugin.name }}
-          v-card-text {{ plugin.desc }}
-          v-card-text
-            v-chip(small, dark) v{{ plugin.version }}
+      v-card(width="350")
+        v-card-title {{ plugin.name }}
+        v-card-text {{ plugin.desc }}
+        v-card-text
+          v-chip(small, dark) {{ plugin.version }}
   v-row
     v-col
-  v-row(class="tw-text-2xl tw-text-center")
-    v-col
-      span Utils
-  v-row(justify="tw-grid tw-gap-4 items-center justify-center")
-    div(v-for="util in utils")
-      v-hover(v-slot="{ hover }")
-        v-card(  :dark="hover" :class="hover ? 'tw-cursor-pointer' : ''"  width="350")
-          v-card-title {{ util.name }}
-          v-card-text {{ util.desc }}
-          v-card-text
-            v-chip(small, dark) v{{ util.version }}
 </template>
 
 <script>
@@ -53,31 +41,25 @@ export default {
           name: "Server",
           link: "https://github.com/fookiejs/cache",
           desc: "Boktan açıklama burada.",
-          version: "1.5.4",
+          version: "v1.5.4",
         },
         {
-          name: "Server",
+          name: "Databases",
           link: "https://github.com/fookiejs/cache",
           desc: "Boktan açıklama burada.",
-          version: "1.5.4",
-        },
-        {
-          name: "Server",
-          link: "https://github.com/fookiejs/cache",
-          desc: "Boktan açıklama burada.",
-          version: "1.5.4",
+          version: "v1.5.4",
         },
         {
           name: "Cache",
           link: "https://github.com/fookiejs/cache",
           desc: "Boktan açıklama burada.",
-          version: "1.5.4",
+          version: "v1.5.4",
         },
         {
           name: "Balancer",
           link: "https://github.com/fookiejs/cache",
           desc: "Boktan açıklama burada.",
-          version: "1.5.4",
+          version: "In Progress",
         },
       ],
       utils: [
