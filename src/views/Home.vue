@@ -19,66 +19,41 @@ div(class="tw-grid tw-gap-8")
         v-icon(right) mdi-file-code-outline
   v-row(class=" tw-text-center")
     v-col
-      span(class="tw-text-2xl") Tool & Plugins
-  v-row(justify="tw-grid tw-grid-rows-4 tw-gap-4 justify-center")
-    div(v-for="plugin in plugins")
-      v-card(width="380")
-        v-card-title {{ plugin.name }}
-        v-card-subtitle {{ plugin.desc }}
+      span(class="tw-text-2xl") Repositories
+  v-row(class="tw-gap-4 justify-center")
+    div(v-for="repo in repos")
+      v-card(width="380" outlined)
+        v-card-title {{repo.name}}
+          v-spacer
+          v-btn(:href="repo.html_url" target="#" icon)
+            v-icon() mdi-link  
+        v-card-subtitle {{repo.description || "-"}}
         v-card-text
-          v-chip(class="tw-font-italic" label)
-            span(class="tw-text-green-600 tw-mr-2 tw-font-bold") {{">"}}
-            span(class="tw-text-gray-900 tw-font-bold") {{plugin.npm}}
-            
+          v-chip(label outlined class="tw-mr-1") 
+            v-icon(left small) mdi-star     
+            span {{repo.stargazers_count}} 
+          v-chip(label outlined) 
+            v-icon(left small) mdi-eye     
+            span {{repo.watchers}}   
+        v-card-actions
+          v-chip(class="tw-mr-1" v-for="t in repo.topics" small dark) {{t}}
+
   v-row
     v-col
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      plugins: [
-        {
-          name: "Core",
-          link: "https://github.com/fookiejs/cache",
-          desc: "Fookie JS Core",
-          npm: "npm install fookie",
-        },
-        {
-          name: "Server",
-          link: "https://github.com/fookiejs/cache",
-          desc: "Allows the application to respond to http request.",
-          npm: "npm install fookie-server",
-        },
-        {
-          name: "Databases",
-          link: "https://github.com/fookiejs/cache",
-          desc: "Allows to use application with various databases.",
-          npm: "npm install fookie-databases",
-        },
-        {
-          name: "Cache",
-          link: "https://github.com/fookiejs/cache",
-          desc: "Solve cache needs in seconds.",
-          npm: "npm install fookie-cache",
-        },
-        {
-          name: "Cron",
-          link: "https://github.com/fookiejs/cache",
-          desc: "CronJob solution.",
-          npm: "npm install fookie-cron",
-        },
-      ],
-      utils: [
-        {
-          name: "FOOKIE UI",
-          link: "google.com",
-          desc: "12312312",
-          version: "1.5.4",
-        },
-      ],
+      repos: [],
     };
+  },
+  mounted: async function () {
+    let res = await axios.get("https://api.github.com/orgs/fookiejs/repos");
+    console.log(res.data);
+    this.repos = res.data;
   },
 };
 </script>
