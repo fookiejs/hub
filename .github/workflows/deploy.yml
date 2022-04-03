@@ -3,8 +3,9 @@
 
 name: Build & Deploy
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
