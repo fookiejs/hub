@@ -1,14 +1,18 @@
 <template lang="pug">
 v-app(app)
-  v-app-bar(app color="white" elevate-on-scroll)
+  v-app-bar(app elevate-on-scroll)
     v-container
       v-row(align="center")
           v-app-bar-nav-icon 
             v-img(src="./assets/logo.png" max-height="32" contain)
           v-app-bar-title() Fookie.js
-          v-spacer      
-          v-btn(icon href="https://discord.com/invite/Y4BPxTUMsh" target="#" )
-            v-icon mdi-discord
+          v-spacer
+          v-btn(text href="mailto:umut@fookiejs.com" target="#" )  Contact
+            v-icon(right) mdi-email-outline
+          v-btn(text href="https://discord.com/invite/Y4BPxTUMsh" target="#" ) Discord
+            v-icon(right) mdi-account-group
+          v-btn(text @click="dark = !dark") {{dark ? 'Light': 'Dark'}}
+            v-icon(right) mdi-theme-light-dark
   v-main(app)
     v-container(app)
       router-view
@@ -25,7 +29,19 @@ v-app(app)
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      dark: true,
+    };
+  },
   components: {},
-  mounted() {},
+  mounted() {
+    this.$vuetify.theme.dark = true;
+  },
+  watch: {
+    dark: function (val) {
+      this.$vuetify.theme.dark = val;
+    },
+  },
 };
 </script>

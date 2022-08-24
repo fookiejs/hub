@@ -17,9 +17,9 @@ div(class="tw-grid tw-gap-8")
         v-icon(right) mdi-book-outline
       v-btn(elevation="0" class="tw-mx-1" href="https://github.com/fookiejs/examples" target="#") Examples  
         v-icon(right) mdi-file-code-outline
-  v-row(class=" tw-text-center")
+  v-row(class="tw-text-center")
     v-col
-      span(class="tw-text-2xl") Repositories
+      span(class="tw-text-2xl") Ecosystem
   v-row(class="tw-gap-4 justify-center")
     div(v-for="repo in repos")
       v-card(width="380" outlined)
