@@ -17,14 +17,14 @@ div(class="tw-grid tw-gap-8")
         v-icon(right) mdi-github
       v-btn(elevation="0" class="tw-mx-1" href="https://fookiejs.github.io/core/" target="#") Documentation 
         v-icon(right) mdi-book-outline
-      v-btn(elevation="0" class="tw-mx-1" href="https://github.com/fookiejs/examples" target="#") Examples  
+      v-btn(elevation="0" class="tw-mx-1" href="https://github.com/fookiejs/example" target="#") Examples  
         v-icon(right) mdi-file-code-outline
   v-row(class="tw-text-center")
     v-col
       span(class="tw-text-2xl") Ecosystem
   v-row(class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-4")
     div(v-for="repo in repos")
-      v-card(outlined class="tw-w-full tw-flex tw-flex-col tw-justify-between tw-rounded-lg")
+      v-card(outlined class="tw-h-full tw-flex tw-flex-col tw-justify-between")
         div
           v-card-title(class="tw-text-xl tw-font-semibold")
             span {{repo.name}}
@@ -32,15 +32,15 @@ div(class="tw-grid tw-gap-8")
             v-btn(:href="repo.html_url" target="#" icon)
               v-icon() mdi-link  
           v-card-subtitle(class="tw-text-sm") {{repo.description || "-"}}
-          v-card-text
-            v-chip(label outlined class="tw-mr-1") 
-              v-icon(left small) mdi-star     
-              span {{repo.stargazers_count}} 
-            v-chip(label outlined) 
-              v-icon(left small) mdi-eye     
-              span {{repo.watchers}}
         v-card-actions(class="tw-p-4")
           v-chip(class="tw-mr-1" v-for="t in repo.topics" small dark) {{t}}
+          v-spacer
+          v-chip(label outlined class="tw-mr-1") 
+            v-icon(left small) mdi-star     
+            span {{repo.stargazers_count}} 
+          v-chip(label outlined) 
+            v-icon(left small) mdi-eye     
+            span {{repo.watchers}}
 
 
   v-row
