@@ -27,7 +27,7 @@ div(class="tw-grid tw-gap-8")
       v-card(outlined class="tw-h-full tw-flex tw-flex-col tw-justify-between")
         div
           v-card-title(class="tw-text-xl tw-font-semibold")
-            span {{repo.name}}
+            span {{format_title(repo.name)}}
             v-spacer
             v-btn(:href="repo.html_url" target="#" icon)
               v-icon() mdi-link  
@@ -55,9 +55,16 @@ export default {
       repos: [],
     };
   },
+  methods: {
+    format_title(inputStr) {
+      return inputStr
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    },
+  },
   mounted: async function () {
     let res = await axios.get("https://api.github.com/orgs/fookiejs/repos");
-    console.log(res.data);
     this.repos = res.data;
   },
 };
